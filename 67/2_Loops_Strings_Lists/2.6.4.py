@@ -10,17 +10,14 @@
 """
 
 
-# new_row = input()
-# while new_row != "end":
-#     new_row = new_row.split()
-#     new_row = [int(el) for el in new_row]
-#     original_matrix.append(new_row)
-#     print('matrix:', original_matrix)
-#     new_row = input()
+original_matrix = []
 
-original_matrix = [[9, 5, 3],
-                   [0, 7, -1],
-                   [-5, 2, 9]]
+new_row = input()
+while new_row != "end":
+    new_row = new_row.split()
+    new_row = [int(el) for el in new_row]
+    original_matrix.append(new_row)
+    new_row = input()
 
 rows_num = len(original_matrix)
 cols_num = len(original_matrix[0])
@@ -29,22 +26,15 @@ result_matrix = []
 for row in range(0, rows_num):
     temp_row = []
     for el in range(0, cols_num):
-
         temp_el = original_matrix[row - 1][el] + \
-                                 original_matrix[(row + 1) % rows_num][el] + \
-                                 original_matrix[row][el - 1] + \
-                                 original_matrix[row][(el + 1) % cols_num]
+                  original_matrix[(row + 1) % rows_num][el] + \
+                  original_matrix[row][el - 1] + \
+                  original_matrix[row][(el + 1) % cols_num]
         temp_row.append(temp_el)
-        print(temp_el)
-    print(temp_row)
     result_matrix.append(temp_row)
 
-print('\nresult_matrix:')
-print(result_matrix[0])
-print(result_matrix[1])
-print(result_matrix[2])
-
-print('\nPlaned:')
-print(3, 21, 22)
-print(10, 6, 19)
-print(20, 16, - 1)
+for row in range(0, rows_num):
+    row_content = ''
+    for el in range(0, cols_num):
+        row_content += str(result_matrix[row][el]) + ' '
+    print(row_content)
